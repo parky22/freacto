@@ -42,8 +42,10 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).send(err.message || 'Internal server error.');
 });
 
+const port = process.env.PORT || 1337;
 
-server.listen(1337, function () {
+
+server.listen(port, function () {
     console.log('The server is listening on port 1337!');
     db.sync()
       .then(function () {
