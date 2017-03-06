@@ -48,5 +48,9 @@
     "sequelize": "^3.29.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.14.0"
+  },
+  "devDependencies": {
+    "supertest": "^3.0.0",
+    "supertest-as-promised": "^4.0.2"
   }
 }
