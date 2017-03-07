@@ -6,7 +6,7 @@ const Sequelize = require('sequelize');
 // get all questions
 questionsRouter.get('/', (req, res, next) => {
   db.model('question').findAll()
-  .then(questions => res.json(questions))
+  .then(questions => res.status(200).json(questions))
   .catch(next);
 })
 
@@ -16,14 +16,14 @@ questionsRouter.get('/current', (req, res, next) => {
     include: [{ model: db.model('answer')}],
     where: { current: true }
   }).then(question => {
-    res.json(question)})
+    res.status(200).json(question)})
   .catch(next);
 })
 
 // get question by ID
 questionsRouter.get('/:id', (req, res, next) => {
   db.model('question').findById(req.params.id)
-  .then(question => res.json(question))
+  .then(question => res.status(200).json(question))
   .catch(next);
 })
 

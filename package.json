@@ -4,7 +4,7 @@
   "description": "",
   "main": "server/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --compilers js:babel-register server/**/*.test.js",
     "start": "webpack -w && bin/setup && nodemon server/app.js"
   },
   "repository": {
@@ -50,6 +50,7 @@
     "webpack": "^1.14.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "supertest": "^3.0.0",
     "supertest-as-promised": "^4.0.2"
   }

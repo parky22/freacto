@@ -5,7 +5,7 @@ const db = require('../../db');
 // get all questions
 answersRouter.get('/', (req, res, next) => {
   db.model('answer').findAll()
-  .then(answers => res.json(answers))
+  .then(answers => res.status(200).json(answers))
   .catch(next);
 })
 
@@ -20,7 +20,7 @@ answersRouter.get('/:id', (req, res, next) => {
 answersRouter.get('/question/:id', (req, res , next) => {
   db.model('answer').findAll({
     where: { questionId: req.params.id }
-  }).then(questions => res.json(questions))
+  }).then(questions => res.status(200).json(questions))
   .catch(next);
 })
 

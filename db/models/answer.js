@@ -9,6 +9,7 @@ const Answer = db.define('answer', {
       notEmpty: true
     }
   }
+  // create getter/setter method to use markdown library
 });
 
 module.exports = Answer;
