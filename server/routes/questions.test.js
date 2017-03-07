@@ -1,5 +1,6 @@
 const request = require('supertest-as-promised');
 const { expect } = require('chai');
+const db = require('../../db');
 const Question = require('../../db/models/question');
 const Answer = require('../../db/models/answer');
 const app = require('../app');
@@ -24,11 +25,17 @@ xdescribe('/question', () => {
     content: 'a solution that I need to go back and find'
   }
 
-  before(
-    () => {
-        Question.create(question1)
-    }
-  )
+  before(() => {
+    return db.sync({force: true});
+  });
+
+  beforeEach(() => {
+      return Question.create(question1)
+  });
+
+  afterEach(() => {
+    return Question.truncate({cascade: true});
+  });
 
   it('GETs all questions', () => {
     request(app)

@@ -17,32 +17,29 @@ describe('/api/answers', () => {
 
   before(() => {
       return db.sync({force: true});
-    }
-  )
+  });
 
   beforeEach(() => {
     return Answer.create(answer1);
-  })
+  });
   //need to clear everything in the test database
   afterEach(() => {
-      Answer.truncate({cascade: true});
-    }
-  )
+    return Answer.truncate({cascade: true});
+  });
 
   it('GETs all answers', () => {
     return request(app)
       .get('/api/answer')
       .expect(200)
       .then(res => {
-        console.log("RES", res.body);
         expect(res.body.length).to.equal(1);
-        //expect(res.body).to.contain(answer1);
+        expect(res.body.content).to.equal(answer1.content);
       })
   })
 
   it('GETs answer by id', () => {
     return request(app)
-      .get('/1')
+      .get('/api/1')
       .expect(200)
       .then(res => {
         expect(res.body).to.contain(answer1);
