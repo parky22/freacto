@@ -3,9 +3,14 @@ const answersRouter = express.Router();
 const db = require('../../db');
 
 // get all questions
+console.log('ANSWERS ROUTE RUNNING???');
 answersRouter.get('/', (req, res, next) => {
+  console.log('ABOVE LINE 7');
   db.model('answer').findAll()
-  .then(answers => res.status(200).json(answers))
+  .then(answers => {
+    console.log('ANSWERS', answers);
+    res.status(200).json(answers);
+  })
   .catch(next);
 })
 

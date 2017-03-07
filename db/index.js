@@ -1,8 +1,9 @@
 const chalk = require('chalk');
 const Sequelize = require('sequelize');
+const app = require('../../index');
 
 // db server constant(s)
-const dbName = 'freacto';
+const dbName = (process.env.DATABASE_NAME || app.name) + (app.isTesting ? '_test' : '');
 // +(process.env.NODE_ENV === 'testing' ? '_test' : '');
 const url = process.env.DATABASE_URL || `postgres://localhost:5432/${dbName}`;
 

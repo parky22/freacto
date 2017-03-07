@@ -6,7 +6,7 @@ const http = require('http');
 const express = require('express');
 const app = express(); //invoke router as app
 const server = http.createServer();
-const routes = require('./routes') ;
+const routes = require('./routes');
 const db = require('../db');
 
 //require in our models
